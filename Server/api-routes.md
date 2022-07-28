@@ -57,3 +57,27 @@ Delete Post = 'http://localhost:8080/deletePost/:postId'      -- DELETE
 --> if post not found --> return res.status(400).send({message: 'Post does not exist'});
 --> if different user wants to delete then return res.status(400).send({message: 'You are not authorized to delete this post'});
 --> else delete the post and return res.status(200).send({message: 'Post deleted successfully'});
+
+Like Post = 'http://localhost:8080/likePost/:postId'  -- POST
+Dislike Post = 'http://localhost:8080/dislikePost/:postId'  -- POST
+--> headers -- token  (required)  -- logged User
+--> params -- postId  (required)
+--> if wrong token then returns error with status code 500 with error message
+--> if post doesn't exists return res.status(400).send({message: 'Post does not exist'});
+--> if already disliked return res.status(400).send({message: 'You have not liked this post'});
+--> else return res.status(200).send({message: 'Post disliked successfully'});
+
+
+Get All Post = 'http://localhost:8080/getAllPosts'
+it returns all posts
+
+Get A Single Post = 'http://localhost:8080/getPost'
+--> params -- postId  (required)
+--> if wrong postID return res.status(400).send({message: 'Post does not exist'});
+--> else return res.status(200).send(post);
+
+Get Posts By User = 'http://localhost:8080/getPostsByUser'
+--> headers -- token  (required)  -- logged User
+--> if User Doesn't have any post -- return res.status(400).send({message: 'User does not have any posts'});
+--> if User Have Post  -- return res.status(200).send(posts);
+--> else if any error -- res.status(500).json(err);

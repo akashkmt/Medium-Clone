@@ -77,7 +77,49 @@ const dislikePost = async(req, res) => {
         post.likes = post.likes.filter(like => like.toString() !== decoded._id.toString());
         // await post.save();
         await Post.findByIdAndUpdate(id, {likes: post.likes});
-        return res.status(200).send({message: 'Post unliked successfully'});
+        return res.status(200).send({message: 'Post disliked successfully'});
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
+
+
+// get all posts
+const getAllPosts = async(req, res) => {
+    try {
+        const posts = await Post.find();
+        return res.status(200).send(posts);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
+
+// get a post
+const getPost = async(req, res) => {
+    try {
+        const id = req.params.postId;
+        const post = await Post.findById(id);
+        if (!post) {
+            return res.status(400).send({message: 'Post does not exist'});
+        }
+        return res.status(200).send(post);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
+
+// get posts by user
+const getPostsByUser = async(req, res) => {
+    try {
+        // const id = req.params.userId;
+        // const posts = await Post.find({user: id});
+        const {token} = req.headers;
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const posts = await Post.find({user: decoded._id});
+        if (!posts) {
+            return res.status(400).send({message: 'User does not have any posts'});
+        }
+        return res.status(200).send(posts);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -89,5 +131,8 @@ module.exports = {
     createPost,
     deletePost,
     likePost,
-    dislikePost
+    dislikePost,
+    getAllPosts,
+    getPost,
+    getPostsByUser
 }
