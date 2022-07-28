@@ -10,7 +10,7 @@ const createPost = async(req, res) => {
         post.user = decoded._id;
         // console.log(post);
         // const newPost = await (await Post.create(post)).populate('user');
-        const newPost = await (await Post.create(post))
+        const newPost = await Post.create(post);
         // return res.status(200).send(newPost);
         return res.status(200).send({message: 'Post created successfully', post: newPost});
         // console.log(decoded);
@@ -18,6 +18,18 @@ const createPost = async(req, res) => {
         res.status(500).json(err);
     }
 }
+
+// create post without token
+const createPostWithoutToken = async(req, res) => {
+    try {
+        const post = req.body;
+        const newPost = await Post.create(post);
+        return res.status(200).send({message: 'Post created successfully', post: newPost});
+    } catch (err) {
+        res.status(500).json(err);
+    }
+}
+
 
 //Delete a post
 const deletePost = async(req, res) => {
@@ -87,7 +99,7 @@ const dislikePost = async(req, res) => {
 // get all posts
 const getAllPosts = async(req, res) => {
     try {
-        const posts = await Post.find();
+        const posts = await Post.find().populate('user');
         return res.status(200).send(posts);
     } catch (err) {
         res.status(500).json(err);
@@ -98,7 +110,7 @@ const getAllPosts = async(req, res) => {
 const getPost = async(req, res) => {
     try {
         const id = req.params.postId;
-        const post = await Post.findById(id);
+        const post = await Post.findById(id).populate('user');
         if (!post) {
             return res.status(400).send({message: 'Post does not exist'});
         }
@@ -115,7 +127,7 @@ const getPostsByUser = async(req, res) => {
         // const posts = await Post.find({user: id});
         const {token} = req.headers;
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const posts = await Post.find({user: decoded._id});
+        const posts = await Post.find({user: decoded._id}).populate('user');
         if (!posts) {
             return res.status(400).send({message: 'User does not have any posts'});
         }
@@ -134,5 +146,6 @@ module.exports = {
     dislikePost,
     getAllPosts,
     getPost,
-    getPostsByUser
+    getPostsByUser,
+    createPostWithoutToken
 }
