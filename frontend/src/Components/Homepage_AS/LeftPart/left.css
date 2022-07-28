@@ -1,0 +1,38 @@
+.left{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+    height: 100%;
+    border-right: 0.05px solid black;
+    width: 8%;
+    position: fixed;
+    margin-top: -80px;
+    
+    
+}
+.left>div{
+    
+    justify-content: space-between;
+}
+
+.mid{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding: -10px;
+    justify-content: space-between;
+}
+.mid>img{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    width: 25px;
+    height: 25px;
+}
+
+img{
+    cursor: pointer;
+}
