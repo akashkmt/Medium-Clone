@@ -1,11 +1,13 @@
 import React from 'react';
 import {ChakraProvider} from '@chakra-ui/react';
+import Login from './Components/Login/Login';
+
 
 
 function App() {
   return (
     <ChakraProvider>
-      <h1>Hello</h1>
+      <Login/>
     </ChakraProvider>
   );
 }
