@@ -33,7 +33,7 @@ const loginUser = async(req, res) => {
         if (!isMatch) {
             return res.status(400).send({message: 'Incorrect password'});
         }
-        const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET);
+        const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET, {expiresIn: '24h'});
         // const newUser = user.toJSON();
         // delete newUser.password;
         return res.status(200).send({token});
@@ -117,11 +117,22 @@ const getUser = async(req, res) => {
     }
 }
 
+//get all users
+const getAllUsers = async(req, res) => {
+    try {
+        const users = await User.find();
+        return res.status(200).send(users);
+    } catch (err) {
+        return res.status(500).send(err);
+    }
+}
+
 module.exports = {
     createUser,
     loginUser,
     isLoggedIn,
     followUser,
     unfollowUser,
-    getUser
+    getUser,
+    getAllUsers
 }

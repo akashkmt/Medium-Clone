@@ -29,7 +29,7 @@ Follow A User = 'http://localhost:8080/followUser/:userId'   -- POST
 --> params -- userId  --> user that you want to follow
 --> if already follows -- return res.status(400).send({message: 'Already following'});
 --> else  -- return res.status(200).send({message: 'Followed'});
---> if token is invalid then return res.status(200).send({message: 'Followed'});
+--> if token is invalid then return res.status(500).send(error);
 
 
 UnFollow A User = 'http://localhost:8080/unfollowUser/:userId'   -- POST
@@ -37,7 +37,7 @@ UnFollow A User = 'http://localhost:8080/unfollowUser/:userId'   -- POST
 --> params -- userId  --> user that you want to unfollow
 --> if already unfollows -- return res.status(400).send({message: 'Not following'});
 --> else  -- return res.status(200).send({message: 'Unfollowed'});
---> if token is invalid then return res.status(200).send({message: 'Followed'});
+--> if token is invalid then return res.status(500).send(error);
 
 
 Get User  = 'http://localhost:8080/getUser'   -- GET
@@ -48,6 +48,10 @@ Get User  = 'http://localhost:8080/getUser'   -- GET
 
 Create Post = 'http://localhost:8080/createPost'       -- POST
 --> headers -- token  (required)
+--> body : {
+    title: "",
+    content: ""
+}
 --> if wrong token then returns error with status code 500 with error message
 --> if all good then returns status(200).send({message: 'Post created successfully', post: newPost});
 
@@ -71,7 +75,7 @@ Dislike Post = 'http://localhost:8080/dislikePost/:postId'  -- POST
 Get All Post = 'http://localhost:8080/getAllPosts'
 it returns all posts
 
-Get A Single Post = 'http://localhost:8080/getPost'
+Get A Single Post = 'http://localhost:8080/getPost/:postId'
 --> params -- postId  (required)
 --> if wrong postID return res.status(400).send({message: 'Post does not exist'});
 --> else return res.status(200).send(post);
