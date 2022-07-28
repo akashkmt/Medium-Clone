@@ -1,0 +1,103 @@
+.mains{
+    width: 100%;
+    height: 200vh;
+    box-sizing: border-box;
+    display: flex;
+}
+.divs1
+{
+    width: 5.8vw;
+    height: 100%;
+    border: 0.1vh solid #e6e6e6;
+    background-color: 
+    #ffffff;
+}
+.divs2
+{
+    width: 64.8vw;
+    height: 100vh;
+    border: 0.1vh solid #e6e6e6;
+    background-color: 
+    #ffffff;
+
+}
+.divs2 h1
+{
+    font-size: 3.1vw;
+   
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-top: 7.8vh;
+    font-weight: 795;
+    margin-left: 6.5vw;
+}
+.divs3
+{
+    width: 29vw;
+    height: 100%;
+}
+.flexs
+{
+    display: flex;
+    margin-left: 4.5vw;
+    margin-top: 4.6vh;
+}
+.flexs p
+{
+    font-size: 1.1vw;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-left: 2vw;
+    font-weight: 470;
+    color: #292967;
+    cursor: pointer;
+}
+.flexs3
+{
+    display: flex;
+}
+.hrb1
+{
+    margin-left: 6.5vw;
+   width: 3vw;
+   height: 0.1vh;
+   background-color: 
+    
+#292929 ;
+   margin-top: 2vh;
+}
+.hrb2
+{
+    margin-top: 2vh; 
+    width: 47.8vw;
+    background-color: #e6e6e6;
+    height: 0.1vh;
+}
+.flexs1
+{
+    display: flex;
+    margin-left: 3.5vw;
+}
+.flexs1 img
+{
+    margin-top: 1vh;
+    
+}
+
+.flexs0
+{
+    display: flex;
+}
+.new_list_button
+{
+    width: 7.3vw;
+    height: 6.5vh;
+    background-color: #1a8917;
+    color: white;
+    border-radius: 3vw;
+    margin-top: 8vh;
+    margin-left: 30.2vw;
+
+}
+.new_list_button:hover
+{
+    background: #0a7906;
+}

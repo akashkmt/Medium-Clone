@@ -1,0 +1,117 @@
+.mainss{
+    width: 100%;
+    height: 200vh;
+    box-sizing: border-box;
+    display: flex;
+}
+.divss1
+{
+    width: 5.8vw;
+    height: 100%;
+    border: 0.1vh solid #e6e6e6;
+    background-color: 
+    #ffffff;
+}
+.divss2
+{
+    width: 64.8vw;
+    height: 100vh;
+    border: 0.1vh solid #e6e6e6;
+    background-color: 
+    #ffffff;
+
+}
+.divss2 h1
+{
+    font-size: 3.1vw;
+   
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-top: 7.8vh;
+    font-weight: 795;
+    margin-left: 6.5vw;
+}
+.divss3
+{
+    width: 29vw;
+    height: 100%;
+}
+.flexss
+{
+    display: flex;
+    margin-left: 4.6vw;
+    margin-top: 4.6vh;
+}
+.flexss p
+{
+    font-size: 1.05vw;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-left: 2vw;
+    font-weight: 470;
+    color: #292967;
+    cursor: pointer;
+}
+.flexss3
+{
+    display: flex;
+}
+.hrbs1
+{
+    margin-left: 6.5vw;
+   width: 3vw;
+   height: 0.1vh;
+   background-color: 
+    
+#292929 ;
+   margin-top: 2vh;
+}
+.hrbs2
+{
+    margin-top: 2vh; 
+    width: 47.8vw;
+    background-color: #e6e6e6;
+    height: 0.1vh;
+}
+.flexss1
+{
+    display: flex;
+    margin-left: 3.5vw;
+}
+.flexss1 img
+{
+    margin-top: 1vh;
+    
+}
+
+.flexss0
+{
+    display: flex;
+}
+.new_list_buttons
+{
+    width: 8.7vw;
+    height: 5.8vh;
+    background-color: #1a8917;
+    color: white;
+    border-radius: 3vw;
+    margin-top: 8.7vh;
+    margin-left: 15.7vw;
+    font-size: 1.05vw;
+
+}
+.new_list_buttones
+{
+    width: 8.7vw;
+    height: 5.8vh;
+    background-color: transparent;
+   border: 0.1vh solid 
+   #838383;
+    border-radius: 3vw;
+    margin-top: 8.7vh;
+  margin-left: 1.5vh;
+    font-size: 1.05vw;
+
+}
+.new_list_buttons:hover
+{
+    background: #0a7906;
+}
