@@ -24,6 +24,28 @@ Check User = 'http://localhost:8080/isLoggedIn'     -- POST
 --> if anything is wrong then returns status 500 with err
 
 
+Follow A User = 'http://localhost:8080/followUser/:userId'   -- POST
+--> headers -- token (required)   logged user
+--> params -- userId  --> user that you want to follow
+--> if already follows -- return res.status(400).send({message: 'Already following'});
+--> else  -- return res.status(200).send({message: 'Followed'});
+--> if token is invalid then return res.status(200).send({message: 'Followed'});
+
+
+UnFollow A User = 'http://localhost:8080/unfollowUser/:userId'   -- POST
+--> headers -- token (required)   logged user
+--> params -- userId  --> user that you want to unfollow
+--> if already unfollows -- return res.status(400).send({message: 'Not following'});
+--> else  -- return res.status(200).send({message: 'Unfollowed'});
+--> if token is invalid then return res.status(200).send({message: 'Followed'});
+
+
+Get User  = 'http://localhost:8080/getUser'   -- GET
+--> headers -- token (required)   logged user
+--> if error return res.status(500).send(err);
+--> else return user details  --> return res.status(200).send(user);
+
+
 Create Post = 'http://localhost:8080/createPost'       -- POST
 --> headers -- token  (required)
 --> if wrong token then returns error with status code 500 with error message
