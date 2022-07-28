@@ -62,7 +62,7 @@ const likePost = async(req, res) => {
 }
 
 //unlike a post
-const unlikePost = async(req, res) => {
+const dislikePost = async(req, res) => {
     try {
         const {token} = req.headers;
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -89,5 +89,5 @@ module.exports = {
     createPost,
     deletePost,
     likePost,
-    unlikePost
+    dislikePost
 }
