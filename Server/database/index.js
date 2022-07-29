@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const connectDB = async () => {
     try {
-        let uri = process.env.MONGODB_URL;
+        let uri = process.env.MONGODB_URL || "mongodb://localhost:27017/medium";
         // console.log(uri);
         await mongoose.connect(uri, { useNewUrlParser: true });
         console.log('MongoDB Connected...');
