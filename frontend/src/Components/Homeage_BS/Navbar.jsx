@@ -4,6 +4,7 @@ import { useState } from 'react'
 import './Navbar.css'
 import { Button } from "@chakra-ui/button" 
 import Login from '../Login/Login'
+import Register from '../Register/Register'
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false)
 
@@ -37,16 +38,18 @@ const Navbar = () => {
     <li>Our Story</li>
     <li>Membership</li>
     <li>Write</li>
-    <li>Sign in</li>
+    {/* <li>Sign in</li> */}
+    <Login mainTitle='Sign in'  />
+    
   </ul>
 {/* </div> */}
   
 <div>
-  <Button style = {{  background: navbar ? "green" : "black" ,color:"white",borderRadius:"20px",fontSize:"15px",fontWeight:"200" }}>Get started</Button>
+  <Button style = {{  background: navbar ? "green" : "black" ,color:"white",borderRadius:"20px",fontSize:"15px",fontWeight:"200" }}><Register mainTitle='Get started' /></Button>
 </div>
 </div>
 </div>
-{/* <Login /> */}
+
     </>
   )
 }

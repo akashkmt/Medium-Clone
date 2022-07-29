@@ -2,7 +2,8 @@ import React from 'react'
 import Navbar from "./Navbar"
 import {useEffect,useState} from "react"
 import "./HomepageBS.css"
-import { Avatar } from '@chakra-ui/react'
+import { Avatar, Button } from '@chakra-ui/react'
+import Register from '../Register/Register'
 
 
 function HomepageBS() {
@@ -36,9 +37,8 @@ useEffect(()=>{
          <div>
             <h1>Stay curious.</h1>
             <p>Discover stories, thinking, and expertise from writers on any topic.</p>
-            <button>Start reading</button>
+            <Button><Register mainTitle='Start reading' /></Button>
          </div>
-
          <div>
                        
          </div>
