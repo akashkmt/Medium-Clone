@@ -6,4 +6,4 @@ function Homepage_BS() {
   )
 }
 
-export default Homepage_BS
+export default Homepage_BS;

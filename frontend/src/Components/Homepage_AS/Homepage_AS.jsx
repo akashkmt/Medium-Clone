@@ -1,7 +1,9 @@
 import React from 'react'
-<<<<<<< HEAD
 import Left  from "./LeftPart/left";
-import Post from './midPart/Post';
+import Posts from './midPart/Posts';
+import SinglePost from './midPart/singlePost';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Right  from "./RightPart/right";
 
 export default function Homepage() {
@@ -10,17 +12,13 @@ export default function Homepage() {
         <Left/>
         
         <Right/>
-        <Post/>
+
+        <BrowserRouter>
+          <Routes>
+            <Route path="/:postId" element={<SinglePost />} />
+            <Route path="/" element={<Posts/>} />
+          </Routes>
+        </BrowserRouter>
     </div>
   )
 }
-=======
-
-function Homepage_AS() {
-  return (
-    <div>Homepage_AS</div>
-  )
-}
-
-export default Homepage_AS
->>>>>>> f0582d8c8f3d6b00e1e46abf5c5ff7a60205e8b2
