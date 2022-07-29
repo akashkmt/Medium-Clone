@@ -1,100 +1,102 @@
-*{font-family: gt-super,
-Georgia,
-Cambria,
-"Times New Roman",
-Times,
-serif;
+* {
+  font-family: gt-super, Georgia, Cambria, 'Times New Roman', Times, serif;
 }
-.LoginBox{
-    box-shadow:rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    justify-content:center;
-    text-align:center;
-    align-items: center;
-    width: 50%;
-    margin: auto;
+.LoginBox {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 50%;
+  margin: auto;
 }
-.header{
-    letter-spacing: -0.03em;
-    line-height: 32px;
-    font-size: 28px;
-    color: rgba(8, 8, 8, 1);
-    font-weight: 400;
-    text-align: center;
+.header {
+  letter-spacing: -0.03em;
+  line-height: 32px;
+  font-size: 28px;
+  color: rgba(8, 8, 8, 1);
+  font-weight: 400;
+  text-align: center;
 }
-.fbButton{
-    margin-top: 50px;
+.fbButton {
+  margin-top: 50px;
 }
-#mailButton{
-    border-color: rgb(168, 168, 168);
-    width: 212px;
-    text-decoration: none;
-    background: rgb(255, 255, 255);
-    border-style: solid;
-    border-radius: 99em;
-    padding: 7px 16px 9px;
-    line-height: 20px;
-    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    border:1px solid;
-    padding:7px 16px 9px;
-    color: rgba(41, 41, 41, 1);
-    text-align: left;
-    font-size: 14px;
-    font-weight: 400;
+#mailButton {
+  border-color: rgb(168, 168, 168);
+  width: 212px;
+  text-decoration: none;
+  background: rgb(255, 255, 255);
+  border-style: solid;
+  border-radius: 99em;
+  padding: 7px 16px 9px;
+  line-height: 20px;
+  font-family: sohne, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  border: 1px solid;
+  padding: 7px 16px 9px;
+  color: rgba(41, 41, 41, 1);
+  text-align: left;
+  font-size: 14px;
+  font-weight: 400;
 }
-#createAccountBox{
-    font-size: 16px;
-    line-height: 24px;
-    color: rgba(41, 41, 41, 1);
-    font-weight: 400;
+#createAccountBox {
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(41, 41, 41, 1);
+  font-weight: 400;
 }
-#termncon{
-    margin-top: 40px;
-    padding-bottom: 40px;
-color: rgba(117, 117, 117, 1);
-font-size: 13px;
-line-height: 20px;
-font-weight: 400px;
-text-align: center;
-padding-left: 80px;
-padding-right: 80px;
+#termncon {
+  margin-top: 60px;
+  padding-bottom: 40px;
+  color: rgba(117, 117, 117, 1);
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400px;
+  text-align: center;
+  padding-left: 80px;
+  padding-right: 80px;
 }
 
-.contentBox{
-    font-size: 16px;
-    line-height: 24px;
-    color: rgba(41, 41, 41, 1);
-    font-weight: 400;
-    text-align: center;
-    width: 315px;
-    margin: auto;
-    margin-top: 40px;
+.contentBox {
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(41, 41, 41, 1);
+  font-weight: 400;
+  text-align: center;
+  width: 315px;
+  margin: auto;
+  margin-top: 40px;
 }
 
-#emailBox{
-    
-    width: 270px;
-    text-align: center;
-
+#emailBox {
+  width: 270px;
+  text-align: center;
 }
-#continueBtn{
-    width: 226px;
-    border-radius: 99em;
-    line-height: 20px;
-    font-weight: 400;
-    text-align: center;
-    margin: auto;
-    margin-top: 30px;
+#continueBtn {
+  width: 226px;
+  border-radius: 99em;
+  line-height: 20px;
+  font-weight: 400;
+  text-align: center;
+  margin: auto;
+  margin-top: 30px;
 }
-#continueBtn:hover{
-    background: rgba(8, 8, 8, 1);
+#continueBtn:hover {
+  background: rgba(8, 8, 8, 1);
 }
 
-#goBackBtn{
-    border: none;
-    background: none;
-    text-align: center;
-    margin: auto;
-    margin-top: 20px;
-    color: rgb(15, 115, 12);
-    font-weight: 400;
+#goBackBtn {
+  border: none;
+  background: none;
+  text-align: center;
+  margin: auto;
+  margin-top: 20px;
+  color: rgb(15, 115, 12);
+  font-weight: 400;
+}
+
+#formLabelStyle {
+  text-align: center;
+  padding-top: 40px;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
 }

@@ -12,13 +12,19 @@ import {
 import { gapi } from 'gapi-script';
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
-import {GoMail} from "react-icons/go"
+import { GoMail } from 'react-icons/go';
 
-import style from './login.css';
+import style from '../Login/login.css';
 
-const Login = () => {
-  const [input, setInput] = React.useState('');
-  const [isError, setIsError] = React.useState(0);
+const Register = () => {
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  const [isErrorInName, setIsErrorInName] = React.useState(0);
+  const [isErrorInEmail, setIsErrorInEmail] = React.useState(0);
+  const [isErrorInPass, setIsErrorInPass] = React.useState(0);
+
   const [show, setShow] = React.useState(1);
   const responseFacebook = response => {
     console.log(response);
@@ -27,13 +33,22 @@ const Login = () => {
   const responseGoogle = response => {
     console.log(response);
   };
-  const handleInputChange = e => setInput(e.target.value);
+
   const handleLogin = () => {
-    console.log(isError);
-    if (input.length == 0) {
-      setIsError(1);
-    } else {
-      setIsError(0);
+    // console.log(isError);
+    if (name.length == 0) {
+      setIsErrorInName(1);
+    }
+    if (email.length == 0) {
+      setIsErrorInEmail(1);
+    }
+    if (password.length == 0) {
+      setIsErrorInPass(1);
+    }
+    else{
+        setIsErrorInEmail(0);
+        setIsErrorInName(0);
+        setIsErrorInPass(0)
     }
   };
   const signInWithEmail = () => {};
@@ -60,7 +75,7 @@ const Login = () => {
         </Button>
       </Box>
       <Box marginTop={'50px'}>
-        <h1 className="header">WelCome Back.</h1>
+        <h1 className="header">Join Medium.</h1>
       </Box>
       <Box className="fbButton">
         <Box>
@@ -73,7 +88,7 @@ const Login = () => {
         <Box>
           <GoogleLogin
             clientId="72702126253-gk8cjqhtn4spj35a336earhlej9b3i8d.apps.googleusercontent.com" //CLIENTID NOT CREATED YET
-            buttonText="Sign in with google"
+            buttonText="Sign up with google"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
           />
@@ -81,18 +96,18 @@ const Login = () => {
 
         <Box marginBottom={'40px'}>
           <Button id="mailButton" value={show} onClick={() => setShow(0)}>
-            <GoMail></GoMail> Sign in with Email
+            <GoMail></GoMail> Sign up with Email
           </Button>
         </Box>
         <p id="createAccountBox">
-          No account?
+          Already have an account?
           <Button
             color={'rgb(26, 137, 23)'}
             textDecoration={'none'}
             background="none"
             padding={'0px'}
           >
-            Create One
+            Sign in
           </Button>
         </p>
       </Box>
@@ -106,6 +121,8 @@ const Login = () => {
       <Box className="LoginBox" padding="0px 40px 50px 40px">
         <Box paddingBottom={'50px'}>
           <Button
+            value={show}
+            onClick={() => setShow(1)}
             display={'block'}
             textDecoration={'none'}
             background="none"
@@ -123,16 +140,30 @@ const Login = () => {
             </h4>
           </Box>
           <FormControl id="emailBox">
+            <FormLabel id="formLabelStyle">Your Name</FormLabel>
+            <Input
+              type="text"
+              border={'none'}
+              borderBottom="1px"
+              borderRadius={'0px'}
+              value={name}
+              onChange={e => setName(e.target.value)}
+            />
+            {isErrorInName ? (
+              <FormHelperText align="center">Name is required.</FormHelperText>
+            ) : (
+              <FormErrorMessage></FormErrorMessage>
+            )}
             <FormLabel id="formLabelStyle">Your Email</FormLabel>
             <Input
               type="email"
               border={'none'}
               borderBottom="1px"
               borderRadius={'0px'}
-              value={input}
-              onChange={handleInputChange}
+              value={email}
+              onChange={e => setEmail(e.target.value)}
             />
-            {isError ? (
+            {isErrorInEmail ? (
               <FormHelperText align="center">Email is required.</FormHelperText>
             ) : (
               <FormErrorMessage></FormErrorMessage>
@@ -143,10 +174,10 @@ const Login = () => {
               border={'none'}
               borderBottom="1px"
               borderRadius={'0px'}
-              value={input}
-              onChange={handleInputChange}
+              value={password}
+              onChange={e => setPassword(e.target.value)}
             />
-            {isError ? (
+            {isErrorInPass ? (
               <FormHelperText align="center">
                 Password is required.
               </FormHelperText>
@@ -172,7 +203,7 @@ const Login = () => {
               onClick={() => setShow(1)}
               size="sm"
             >
-              All sign in options
+              All sign up options
             </Button>
           </Stack>
         </Box>
@@ -181,7 +212,7 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
 
 {
   /* <script>
