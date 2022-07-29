@@ -14,7 +14,7 @@ import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 import {GoMail} from "react-icons/go"
 
-import style from './login.css';
+import './Login.css';
 
 const Login = () => {
   const [input, setInput] = React.useState('');
@@ -24,19 +24,41 @@ const Login = () => {
     console.log(response);
   };
 
+const loginWithFG = async(userData) => {
+  // console.log('called',userData);
+  try {
+    let res = await fetch('http://localhost:8080/loginUser',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userData)
+    });
+    let data = await res.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
   const responseGoogle = response => {
-    console.log(response);
+    // console.log(response);
+    loginWithFG({
+      email: response.profileObj.email,
+      password: response.profileObj.googleId
+    });
   };
   const handleInputChange = e => setInput(e.target.value);
   const handleLogin = () => {
     console.log(isError);
-    if (input.length == 0) {
+    if (input.length === 0) {
       setIsError(1);
     } else {
       setIsError(0);
     }
   };
-  const signInWithEmail = () => {};
+  // const signInWithEmail = () => {};
   useEffect(() => {
     function start() {
       gapi.client.init({
@@ -71,17 +93,20 @@ const Login = () => {
           />
         </Box>
         <Box>
+        {/* <div className='google-box'> */}
           <GoogleLogin
+            className='google-box'
             clientId="72702126253-gk8cjqhtn4spj35a336earhlej9b3i8d.apps.googleusercontent.com" //CLIENTID NOT CREATED YET
-            buttonText="Sign in with google"
+            buttonText="Sign In with Google"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
           />
+          {/* </div> */}
         </Box>
 
         <Box marginBottom={'40px'}>
           <Button id="mailButton" value={show} onClick={() => setShow(0)}>
-            <GoMail></GoMail> Sign in with Email
+            <GoMail></GoMail> Sign In with Email
           </Button>
         </Box>
         <p id="createAccountBox">
@@ -182,27 +207,3 @@ const Login = () => {
 };
 
 export default Login;
-
-{
-  /* <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '{your-app-id}',
-      cookie     : true,
-      xfbml      : true,
-      version    : '{api-version}'
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script> */
-}

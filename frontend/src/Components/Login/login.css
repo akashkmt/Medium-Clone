@@ -1,5 +1,5 @@
 * {
-  font-family: gt-super, Georgia, Cambria, 'Times New Roman', Times, serif;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .LoginBox {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -99,4 +99,9 @@
   font-size: 13px;
   line-height: 20px;
   font-weight: 400;
+}
+
+
+.google-box{
+  border: 1px solid red;
 }

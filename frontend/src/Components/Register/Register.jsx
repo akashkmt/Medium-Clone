@@ -14,7 +14,7 @@ import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 import { GoMail } from 'react-icons/go';
 
-import style from '../Login/login.css';
+import '../Login/Login.css';
 
 const Register = () => {
   const [name, setName] = React.useState('');
@@ -26,23 +26,49 @@ const Register = () => {
   const [isErrorInPass, setIsErrorInPass] = React.useState(0);
 
   const [show, setShow] = React.useState(1);
+  const registerWithFG = async(userData) => {
+    // console.log('called',userData);
+    try {
+      let res = await fetch('http://localhost:8080/createUser',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+      });
+      let data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const responseFacebook = response => {
     console.log(response);
   };
 
   const responseGoogle = response => {
-    console.log(response);
+    // console.log(response);
+    registerWithFG({
+      name: response.profileObj.name,
+      email: response.profileObj.email,
+      password: response.profileObj.googleId
+    });
+    // console.log({
+    //   name: response.profileObj.name,
+    //   email: response.profileObj.email,
+    //   password: response.profileObj.googleId
+    // })
   };
 
   const handleLogin = () => {
     // console.log(isError);
-    if (name.length == 0) {
+    if (name.length === 0) {
       setIsErrorInName(1);
     }
-    if (email.length == 0) {
+    if (email.length === 0) {
       setIsErrorInEmail(1);
     }
-    if (password.length == 0) {
+    if (password.length === 0) {
       setIsErrorInPass(1);
     }
     else{
@@ -51,7 +77,7 @@ const Register = () => {
         setIsErrorInPass(0)
     }
   };
-  const signInWithEmail = () => {};
+  // const signInWithEmail = () => {};
   useEffect(() => {
     function start() {
       gapi.client.init({
@@ -214,26 +240,3 @@ const Register = () => {
 
 export default Register;
 
-{
-  /* <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '{your-app-id}',
-      cookie     : true,
-      xfbml      : true,
-      version    : '{api-version}'
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script> */
-}
