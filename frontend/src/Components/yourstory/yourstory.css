@@ -59,15 +59,33 @@
     margin-left: 6.5vw;
    width: 3vw;
    height: 0.1vh;
+   background-color: #e6e6e6;
+
+   margin-top: 2vh;
+}
+.hrbs2
+{
+   
+   width: 1.5vw;
+   height: 0.1vh;
+   background-color: #e6e6e6;
+
+   margin-top: 2vh;
+}
+.hrbs3
+{
+    
+   width: 5.2vw;
+   height: 0.1vh;
    background-color: 
     
 #292929 ;
    margin-top: 2vh;
 }
-.hrbs2
+.hrbs4
 {
     margin-top: 2vh; 
-    width: 47.8vw;
+    width: 41.1vw;
     background-color: #e6e6e6;
     height: 0.1vh;
 }

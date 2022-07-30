@@ -6,7 +6,8 @@ const Newstory = () => {
     const [title,settitle] = useState("")
     const [content,setcontent] = useState("")
     const [name,setname] = useState("Aausaf alam")
-  let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmUzZDc3ODI4YmQzNTU1MTk4OGM5OTQiLCJpYXQiOjE2NTkwOTkyNzIsImV4cCI6MTY1OTE4NTY3Mn0.XXA2yuX6hpELj24QezTG3FmIfUp1tKyJKqD5aXIJjOM"
+    let token = (JSON.parse(localStorage.getItem("token")) != undefined)?JSON.parse(localStorage.getItem("token")): "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmUzZDc3ODI4YmQzNTU1MTk4OGM5OTQiLCJpYXQiOjE2NTkwOTkyNzIsImV4cCI6MTY1OTE4NTY3Mn0.XXA2yuX6hpELj24QezTG3FmIfUp1tKyJKqD5aXOM"
+ 
     
     const posts = () => {
          axios.post("http://localhost:8080/createPost",{
@@ -19,6 +20,12 @@ const Newstory = () => {
          }}
          ).then((res)=>{
             console.log(res.data)
+            if(res.data)
+            {
+               alert(res.data.message)
+               settitle("")
+               setcontent("")
+            }
          }).catch((err)=>{
             console.log(err)
          })
