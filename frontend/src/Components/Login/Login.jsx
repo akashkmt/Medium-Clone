@@ -24,8 +24,12 @@ import Register from '../Register/Register';
 
 function Login({ mainTitle }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [input, setInput] = React.useState('');
-  const [isError, setIsError] = React.useState(0);
+ const [email, setEmail] = React.useState('');
+ const [password, setPassword] = React.useState('');
+
+ const [isErrorInEmail, setIsErrorInEmail] = React.useState(0);
+ const [isErrorInPass, setIsErrorInPass] = React.useState(0);
+
   const [show, setShow] = React.useState(1);
   const responseFacebook = response => {
     console.log(response);
@@ -55,16 +59,41 @@ function Login({ mainTitle }) {
       password: response.profileObj.googleId,
     });
   };
-  const handleInputChange = e => setInput(e.target.value);
-  const handleLogin = () => {
-    console.log(isError);
-    if (input.length === 0) {
-      setIsError(1);
+
+  const handleLoginWithEmail = async () => {
+    if (email.length === 0 && password.length === 0) {
+      setIsErrorInEmail(1);
+      setIsErrorInPass(1);
+    } else if (email.length === 0) {
+      setIsErrorInEmail(1);
+      setIsErrorInPass(0);
+    } else if (password.length === 0) {
+      setIsErrorInEmail(0);
+      setIsErrorInPass(1);
     } else {
-      setIsError(0);
+      setIsErrorInEmail(0);
+      setIsErrorInPass(0);
+    }
+    let userData = {
+      email: email,
+      password: password,
+    };
+    try {
+      let res = await fetch('http://localhost:8080/loginUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+      let data = await res.json();
+      // console.log(data);
+      localStorage.setItem('token', JSON.stringify(data));
+    } catch (error) {
+      console.log(error);
     }
   };
-  // const signInWithEmail = () => {};
+
   React.useEffect(() => {
     function start() {
       gapi.client.init({
@@ -78,25 +107,41 @@ function Login({ mainTitle }) {
 
   return (
     <>
-      <li onClick={onOpen}>{ mainTitle }</li>
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalCloseButton />
-          <ModalBody>
-            <ModalHeader>Welcome Back</ModalHeader>
-          </ModalBody>
-          {show ? (
-            <>
+      {show ? (
+        <>
+          <li onClick={onOpen}>{mainTitle}</li>
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent
+              maxH={'1000px'}
+              maxW="678px"
+              marginTop={'0px'}
+              marginBottom="0px"
+              textAlign={'center'}
+            >
+              <ModalCloseButton />
+              <ModalBody>
+                <ModalHeader
+                  letterSpacing={'-0.03em'}
+                  lineHeight="32px"
+                  fontSize={'28px'}
+                  color="rgba(8, 8, 8, 1)"
+                  font-family='gt-super, Georgia, Cambria, "Times New Roman", Times, serif'
+                  fontWeight={400}
+                  margin="50px 0px 50px 0px"
+                >
+                  Welcome back.
+                </ModalHeader>
+              </ModalBody>
               <Box>
-                <Box>
+                <Box margin={'10px'}>
                   <FacebookLogin
                     appId="358532346452010" //APP ID NOT CREATED YET
                     fields="name,email,picture"
                     callback={responseFacebook}
                   />
                 </Box>
-                <Box>
+                <Box margin={'10px'}>
                   {/* <div className='google-box'> */}
                   <GoogleLogin
                     clientId="72702126253-gk8cjqhtn4spj35a336earhlej9b3i8d.apps.googleusercontent.com" //CLIENTID NOT CREATED YET
@@ -108,11 +153,15 @@ function Login({ mainTitle }) {
                 </Box>
 
                 <Box marginBottom={'40px'}>
-                  <Button value={show} onClick={() => setShow(0)}>
+                  <Button
+                    id="mailButton"
+                    value={show}
+                    onClick={() => setShow(0)}
+                  >
                     <GoMail></GoMail> Sign In with Email
                   </Button>
                 </Box>
-                <p>
+                <p id="signBtn">
                   No account?
                   {/* <Button
                     color={'rgb(26, 137, 23)'}
@@ -122,82 +171,111 @@ function Login({ mainTitle }) {
                   >
                     Create One
                   </Button> */}
-                  <Register mainTitle='Create One' />
+                  <Register mainTitle="Create One" />
                 </p>
               </Box>
-              <Box>
+              <Box id="termncon">
                 Click “Sign In” to agree to Medium’s Terms of Service and
                 acknowledge that Medium’s Privacy Policy applies to you.
               </Box>
-            </>
-          ) : (
-            <Box padding="0px 40px 50px 40px">
-              <Box>
-                <h2>Sign in with email</h2>
+            </ModalContent>
+          </Modal>
+        </>
+      ) : (
+        <>
+          <span onClick={onOpen}>{mainTitle}</span>
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent
+              maxH={'1000px'}
+              maxW="678px"
+              marginTop={'0px'}
+              marginBottom="0px"
+              textAlign={'center'}
+            >
+              <ModalCloseButton  />
+              <ModalBody>
+                <ModalHeader
+                  letterSpacing={'-0.03em'}
+                  lineHeight="32px"
+                  fontSize={'28px'}
+                  color="rgba(8, 8, 8, 1)"
+                  font-family='gt-super, Georgia, Cambria, "Times New Roman", Times, serif'
+                  fontWeight={400}
+                  margin="50px 0px 50px 0px"
+                >
+                  Sign in with email
+                </ModalHeader>
+              </ModalBody>
+              <Box padding="0px 40px 50px 40px">
                 <Box>
-                  <h4>
-                    Enter the email address associated with your account, and
-                    we’ll send a magic link to your inbox.
-                  </h4>
-                </Box>
-                <FormControl>
-                  <FormLabel>Your Email</FormLabel>
-                  <Input
-                    type="email"
-                    border={'none'}
-                    borderBottom="1px"
-                    borderRadius={'0px'}
-                    value={input}
-                    onChange={handleInputChange}
-                  />
-                  {isError ? (
-                    <FormHelperText align="center">
-                      Email is required.
-                    </FormHelperText>
-                  ) : (
-                    <FormErrorMessage></FormErrorMessage>
-                  )}
-                  <FormLabel id="formLabelStyle">Password</FormLabel>
-                  <Input
-                    type="password"
-                    border={'none'}
-                    borderBottom="1px"
-                    borderRadius={'0px'}
-                    value={input}
-                    onChange={handleInputChange}
-                  />
-                  {isError ? (
-                    <FormHelperText align="center">
-                      Password is required.
-                    </FormHelperText>
-                  ) : (
-                    <FormErrorMessage></FormErrorMessage>
-                  )}
-                </FormControl>
+                  <Box>
+                    <h4 className="contentBox">
+                      Enter the email address associated with your account, and
+                      we’ll send a magic link to your inbox.
+                    </h4>
+                  </Box>
+                  <FormControl id="emailBox">
+                    <FormLabel id="formLabelStyle">Your Email</FormLabel>
+                    <Input
+                      type="email"
+                      border={'none'}
+                      borderBottom="1px"
+                      borderRadius={'0px'}
+                      value={email}
+                      onChange={e => setEmail(e.target.value)}
+                    />
+                    {isErrorInEmail ? (
+                      <FormHelperText align="center">
+                        Email is required.
+                      </FormHelperText>
+                    ) : (
+                      <FormErrorMessage></FormErrorMessage>
+                    )}
+                    <FormLabel id="formLabelStyle">Password</FormLabel>
+                    <Input
+                      type="password"
+                      border={'none'}
+                      borderBottom="1px"
+                      borderRadius={'0px'}
+                      value={password}
+                      onChange={e => setPassword(e.target.value)}
+                    />
+                    {isErrorInPass ? (
+                      <FormHelperText align="center">
+                        Password is required.
+                      </FormHelperText>
+                    ) : (
+                      <FormErrorMessage></FormErrorMessage>
+                    )}
+                  </FormControl>
 
-                <Stack spacing={4} direction="row" align="center">
-                  <Button
-                    color="white"
-                    bg="black"
-                    onClick={handleLogin}
-                  >
-                    Continue
-                  </Button>
-                </Stack>
-                <Stack spacing={4} direction="row" align="center">
-                  <Button
-                    value={show}
-                    onClick={() => setShow(1)}
-                    size="sm"
-                  >
-                    All sign in options
-                  </Button>
-                </Stack>
+                  <Stack spacing={4} direction="row" align="center">
+                    <Button
+                      id="continueBtn"
+                      color="white"
+                      bg="black"
+                      onClick={handleLoginWithEmail}
+                    >
+                      Continue
+                    </Button>
+                  </Stack>
+                  <Stack spacing={4} direction="row" align="center">
+                    <Button
+                      id="goBackBtn"
+                      value={show}
+                      onClick={() => setShow(1)}
+                      size="sm"
+                    >
+                      All sign in options
+                    </Button>
+                  </Stack>
+                </Box>
               </Box>
-            </Box>
-          )}
-        </ModalContent>
-      </Modal>
+            </ModalContent>
+          </Modal>
+        </>
+      )}
     </>
   );
 }

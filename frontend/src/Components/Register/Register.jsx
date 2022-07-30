@@ -21,6 +21,7 @@ import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 import { GoMail } from 'react-icons/go';
 import Login from '../Login/Login';
+import './Register.css';
 
 function Register({ mainTitle }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -67,23 +68,47 @@ function Register({ mainTitle }) {
     // })
   };
 
-  const handleLogin = () => {
-    // console.log(isError);
-    if (name.length === 0) {
-      setIsErrorInName(1);
-    }
-    if (email.length === 0) {
+  const handleRegisterWithEmail = async () => {
+    if (name.length === 0 && email.length === 0 && password.length === 0) {
       setIsErrorInEmail(1);
-    }
-    if (password.length === 0) {
+      setIsErrorInName(1);
+      setIsErrorInPass(1);
+    } else if (name.length === 0) {
+      setIsErrorInEmail(0);
+      setIsErrorInName(1);
+      setIsErrorInPass(0);
+    } else if (email.length === 0) {
+      setIsErrorInEmail(1);
+      setIsErrorInName(0);
+      setIsErrorInPass(0);
+    } else if (password.length === 0) {
+      setIsErrorInEmail(0);
+      setIsErrorInName(0);
       setIsErrorInPass(1);
     } else {
       setIsErrorInEmail(0);
       setIsErrorInName(0);
       setIsErrorInPass(0);
     }
+    let userData = {
+      name: name,
+      email: email,
+      password: password,
+    };
+    try {
+      let res = await fetch('http://localhost:8080/createUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+      let data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
-  // const signInWithEmail = () => {};
   React.useEffect(() => {
     function start() {
       gapi.client.init({
@@ -97,44 +122,62 @@ function Register({ mainTitle }) {
 
   return (
     <>
-      <span onClick={onOpen}>{mainTitle}</span>
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalCloseButton />
-          <ModalBody>
-            <ModalHeader>Join Medium.</ModalHeader>
-          </ModalBody>
-          {show ? (
-            <Box>
+      {show ? (
+        <>
+          <span onClick={onOpen}>{mainTitle}</span>
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent
+              maxH={'1000px'}
+              maxW="678px"
+              marginTop={'0px'}
+              marginBottom="0px"
+              textAlign={'center'}
+            >
+              <ModalCloseButton />
+              <ModalBody>
+                <ModalHeader
+                  letterSpacing={'-0.03em'}
+                  lineHeight="32px"
+                  fontSize={'28px'}
+                  color="rgba(8, 8, 8, 1)"
+                  font-family='gt-super, Georgia, Cambria, "Times New Roman", Times, serif'
+                  fontWeight={400}
+                  margin="50px 0px 50px 0px"
+                >
+                  Join Medium.
+                </ModalHeader>
+              </ModalBody>
               <Box>
                 <Box>
-                  <FacebookLogin
-                    appId="358532346452010" //APP ID NOT CREATED YET
-                    fields="name,email,picture"
-                    callback={responseFacebook}
-                  />
-                </Box>
-                <Box>
-                  <GoogleLogin
-                    clientId="72702126253-gk8cjqhtn4spj35a336earhlej9b3i8d.apps.googleusercontent.com" //CLIENTID NOT CREATED YET
-                    buttonText="Sign up with google"
-                    onSuccess={responseGoogle}
-                    onFailure={responseGoogle}
-                  />
-                </Box>
+                  <Box margin={'10px'}>
+                    <FacebookLogin
+                      appId="358532346452010" //APP ID NOT CREATED YET
+                      fields="name,email,picture"
+                      callback={responseFacebook}
+                    />
+                  </Box>
+                  <Box margin={'10px'}>
+                    <GoogleLogin
+                      clientId="72702126253-gk8cjqhtn4spj35a336earhlej9b3i8d.apps.googleusercontent.com" //CLIENTID NOT CREATED YET
+                      buttonText="Sign up with google"
+                      onSuccess={responseGoogle}
+                      onFailure={responseGoogle}
+                    />
+                  </Box>
 
-                <Box marginBottom={'40px'}>
-                  <Button
-                    value={show}
-                    onClick={() => setShow(0)}
-                  >
-                    <GoMail></GoMail> Sign up with Email
-                  </Button>
-                </Box>
-                <p>
-                  Already have an account?
-                  {/* <Button
+                  <Box marginBottom={'40px'}>
+                    <Button
+                      id="mailButton"
+                      value={show}
+                      onClick={() => setShow(0)}
+                    >
+                      <GoMail></GoMail> Sign up with Email
+                    </Button>
+                  </Box>
+                  <p id="signBtn">
+                    Already have an account?
+                    {/* <Button
                     color={'rgb(26, 137, 23)'}
                     textDecoration={'none'}
                     background="none"
@@ -142,39 +185,54 @@ function Register({ mainTitle }) {
                   >
                     Sign in
                   </Button> */}
-                  <Login mainTitle='Sign in' />
-                </p>
-              </Box>
-              <Box>
-                Click “Sign In” to agree to Medium’s Terms of Service and
-                acknowledge that Medium’s Privacy Policy applies to you.
-              </Box>
-            </Box>
-          ) : (
-            <>
-              <Box padding="0px 40px 50px 40px">
-                <Box paddingBottom={'50px'}>
-                  <Button
-                    value={show}
-                    onClick={() => setShow(1)}
-                    display={'block'}
-                    textDecoration={'none'}
-                    background="none"
-                    float={'right'}
-                  >
-                    X
-                  </Button>
+                    <Login mainTitle="Sign in" />
+                  </p>
                 </Box>
+                <Box id="termncon">
+                  Click “Sign Up” to agree to Medium’s Terms of Service and
+                  acknowledge that Medium’s Privacy Policy applies to you.
+                </Box>
+              </Box>
+            </ModalContent>
+          </Modal>
+        </>
+      ) : (
+        <>
+          <span onClick={onOpen}>{mainTitle}</span>
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent
+              maxH={'1000px'}
+              maxW="678px"
+              marginTop={'0px'}
+              marginBottom="0px"
+              textAlign={'center'}
+            >
+              <ModalCloseButton  />
+              <ModalBody>
+                <ModalHeader
+                  letterSpacing={'-0.03em'}
+                  lineHeight="32px"
+                  fontSize={'28px'}
+                  color="rgba(8, 8, 8, 1)"
+                  font-family='gt-super, Georgia, Cambria, "Times New Roman", Times, serif'
+                  fontWeight={400}
+                  margin="50px 0px 50px 0px"
+                >
+                  Sign in with email
+                </ModalHeader>
+              </ModalBody>
+              <Box padding="0px 40px 50px 40px">
                 <Box>
-                  <h2>Sign in with email</h2>
                   <Box>
-                    <h4>
+                    <h4 className="contentBox">
                       Enter the email address associated with your account, and
                       we’ll send a magic link to your inbox.
                     </h4>
                   </Box>
-                  <FormControl>
-                    <FormLabel>Your Name</FormLabel>
+
+                  <FormControl id="emailBox">
+                    <FormLabel id="formLabelStyle">Your Name</FormLabel>
                     <Input
                       type="text"
                       border={'none'}
@@ -190,7 +248,7 @@ function Register({ mainTitle }) {
                     ) : (
                       <FormErrorMessage></FormErrorMessage>
                     )}
-                    <FormLabel>Your Email</FormLabel>
+                    <FormLabel id="formLabelStyle">Your Email</FormLabel>
                     <Input
                       type="email"
                       border={'none'}
@@ -206,7 +264,7 @@ function Register({ mainTitle }) {
                     ) : (
                       <FormErrorMessage></FormErrorMessage>
                     )}
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel id="formLabelStyle">Password</FormLabel>
                     <Input
                       type="password"
                       border={'none'}
@@ -226,15 +284,17 @@ function Register({ mainTitle }) {
 
                   <Stack spacing={4} direction="row" align="center">
                     <Button
+                      id="continueBtn"
                       color="white"
                       bg="black"
-                      onClick={handleLogin}
+                      onClick={handleRegisterWithEmail}
                     >
                       Continue
                     </Button>
                   </Stack>
                   <Stack spacing={4} direction="row" align="center">
                     <Button
+                      id="goBackBtn"
                       value={show}
                       onClick={() => setShow(1)}
                       size="sm"
@@ -244,10 +304,10 @@ function Register({ mainTitle }) {
                   </Stack>
                 </Box>
               </Box>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
+            </ModalContent>
+          </Modal>
+        </>
+      )}
     </>
   );
 }
