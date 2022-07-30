@@ -115,3 +115,57 @@
 {
     background: #0a7906;
 }
+.postlisting
+{
+   
+    width: 50vw;
+    height: 10vh;
+    margin-left: 6.5vw;
+    margin-top: 7vh;
+}
+.listu
+{
+    height: 19vh;
+    width: 48vw;
+    margin-bottom: 4vh;
+
+}
+.borderlast
+{
+    margin-top: 4vh; 
+    width: 50.8vw;
+    background-color: #e6e6e6;
+    height: 0.1vh;
+}
+.listu h3
+{
+    font-weight: 650;
+    font-size: 1.15vw;
+    color: black;
+}
+.listu p
+{
+    font-size: 1.12vw;
+   margin-top: 0.3vh;
+    font-weight: 499;
+    color: #757575;
+    cursor: pointer;
+    height: 10vh;
+    overflow: hidden;
+
+}
+.draft
+{
+  width: 64vw;
+  text-align: center;
+  margin-top: 16vh;
+}
+.draft p 
+{
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;    text-align: center;
+    color:
+    #292929;
+    font-size: 1.2vw;
+    font-weight: 495;
+    margin-top: 4vh;
+}

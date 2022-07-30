@@ -1,0 +1,90 @@
+.headernewstory
+{
+   width: 100%;
+   height: 8vh;
+   display: flex;
+}
+.headernewstory p
+{
+    margin-top: 2.5vh;
+    font-size: 1.05vw;
+    color: 
+    #646464;
+    font-family:"medium-content-sans-serif-font,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif";
+    font-weight: 498;
+    
+}
+.headernewstory button
+{
+    width: 5.3vw;
+    height: 4vh;
+    background-color: 
+    #1a8917;
+    color: white;
+    border-radius: 1.5vw;
+    font-size: 1.05vw;
+    margin-top: 2.6vh;
+    margin-left:47.2vw;
+    transition: 0.2s;
+}
+.headernewstory button:hover{
+    background-color: #095006;
+}
+.tripledot
+{
+    width: 6.5vw;
+    margin-left: 1vh;
+    margin-top: 2vh;
+    height: 8.8vh;
+    margin-top: 1vh;
+    cursor: pointer;
+}
+.img
+{
+    width: 2.4vw;
+    height: 4.7vh;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 2vh;
+    margin-left: 0.5vh;
+}
+.img img
+{
+    width: 100%;
+    height: 100%;
+}
+.box input
+{
+     border: none;
+     outline: none;
+     height: 10vh;
+     font-size: 2.7vw;
+     margin-top: 7.2vh;
+     margin-left: 24vw;
+}
+.box input::placeholder,textarea::placeholder
+{
+    color: #b4b0b0;
+    font-size: 3.1vw;
+    font-family: medium-content-title-font,Georgia,Cambria,"Times New Roman",Times,serif;
+
+}
+.box textarea
+{
+     border: none;
+     outline: none;
+     height: 10vh;
+     font-size: 1.7vw;
+     margin-top: 2vh;
+     margin-left: 24vw;
+
+}
+textarea::placeholder
+{
+    color: #b4b0b0;
+
+
+    font-size: 1.8vw;
+    font-family: medium-content-title-font,Georgia,Cambria,"Times New Roman",Times,serif;
+
+}
