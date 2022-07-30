@@ -6,7 +6,7 @@ const Newstory = () => {
     const [title,settitle] = useState("")
     const [content,setcontent] = useState("")
     const [name,setname] = useState("Aausaf alam")
-    let token = (JSON.parse(localStorage.getItem("token")) != undefined)?JSON.parse(localStorage.getItem("token")): "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmUzZDc3ODI4YmQzNTU1MTk4OGM5OTQiLCJpYXQiOjE2NTkwOTkyNzIsImV4cCI6MTY1OTE4NTY3Mn0.XXA2yuX6hpELj24QezTG3FmIfUp1tKyJKqD5aXOM"
+    let token = (JSON.parse(localStorage.getItem("token")) != undefined)?JSON.parse(localStorage.getItem("token")): "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmUzZDc3ODI4YmQzNTU1MTk4OGM5OTQiLCJpYXQiOjE2NTkxOTgxMzEsImV4cCI6MTY1OTI4NDUzMX0.F3AtJpmDWnSJcdwkWlFd8xq79hHQi2qmz1Y429LtuM0"
  
     
     const posts = () => {

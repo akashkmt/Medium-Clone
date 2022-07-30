@@ -3,6 +3,7 @@
     height: 200vh;
     box-sizing: border-box;
     display: flex;
+  
 }
 .divs1
 {
@@ -16,9 +17,9 @@
 {
     width: 64.8vw;
     height: 100vh;
-    border: 0.1vh solid #e6e6e6;
     background-color: 
     #ffffff;
+    margin-left: 6.5%;
 
 }
 .divs2 h1
@@ -75,10 +76,13 @@
 {
     display: flex;
     margin-left: 3.5vw;
+    width: 56vw;
 }
 .flexs1 img
 {
     margin-top: 1vh;
+    width: 100%;
+  
     
 }
 

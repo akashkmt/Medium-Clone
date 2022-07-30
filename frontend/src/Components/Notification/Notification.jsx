@@ -1,11 +1,12 @@
 import React from 'react'
+import Left from '../LeftParts/left'
+import Right from '../RightParts/right'
 import "./Notification.css"
 const Notification = () => {
   return (
     <>
      <div className="main">
-        <div className="div1">  
-            </div>
+        <Left/>
             <div className="div2">
               <h1>Notifications</h1>
               <div className="flex">
@@ -18,7 +19,7 @@ const Notification = () => {
                <p style={{color:"#1a8917"}} className='p2'>Your stats</p>
               </div>
             </div>
-            <div className="div3"></div>
+            <Right/>
             </div>   
     </>
   )

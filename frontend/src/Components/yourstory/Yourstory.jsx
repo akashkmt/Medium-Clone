@@ -5,6 +5,8 @@ import { useEffect } from 'react'
 import Postlist from './Postlist'
 import Draft from './draft'
 import { useNavigate } from 'react-router-dom'
+import Left from '../LeftParts/left'
+import Right from '../RightParts/right'
 const Yourstory = () => {
   const [post,setpost] = useState([])
   const[color,setcolor] = useState("#292929")
@@ -12,7 +14,7 @@ const Yourstory = () => {
 
   const [switchs ,setswitch] =useState(0)
   const navigate = useNavigate()
-  let token = (JSON.parse(localStorage.getItem("token")) != undefined)?JSON.parse(localStorage.getItem("token")): "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmUzZDc3ODI4YmQzNTU1MTk4OGM5OTQiLCJpYXQiOjE2NTkwOTkyNzIsImV4cCI6MTY1OTE4NTY3Mn0.XXA2yuX6hpELj24QezTG3FmIfUp1tKyJKqD5aXIJjOM"
+  let token = (JSON.parse(localStorage.getItem("token")) != undefined)?JSON.parse(localStorage.getItem("token")): "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmUzZDc3ODI4YmQzNTU1MTk4OGM5OTQiLCJpYXQiOjE2NTkxOTgxMzEsImV4cCI6MTY1OTI4NDUzMX0.F3AtJpmDWnSJcdwkWlFd8xq79hHQi2qmz1Y429LtuM0"
   const fetches = () => {
        axios.get("http://localhost:8080/getPostsByUser",{
              headers:{
@@ -33,8 +35,7 @@ useEffect(()=>{
   return (
     <>
      <div className="mainss">
-        <div className="divss1">
-            </div>
+      <Left/>
             <div className="divss2">
              <div className="flexss0"> <h1>Your stories</h1>
              <button className='new_list_buttons' onClick={()=>{
@@ -74,7 +75,7 @@ useEffect(()=>{
              
               </div>
             </div>
-            <div className="divss3"></div>
+          <Right/>
             </div>   
     </>
   )
