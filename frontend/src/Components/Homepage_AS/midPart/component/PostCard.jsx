@@ -13,12 +13,13 @@ export default function PostCard({ post }) {
             <Box style={{ marginTop: 10 }}>
                 <HStack spacing='18px' mt={8}>
                     <Avatar name={post.user.name} />
-                    <Heading as='h6' size='xs'>{post.user.name}</Heading>
+                    <Heading as='h5' size='sm'>{post.user.name}.</Heading>
+                    <Heading as='h6' size='xs'>July {Math.round(Math.random()*30+1)}</Heading>
                 </HStack>
                 <Heading as='h4' size='md' mt={3}>{post.title}</Heading>
                 <Text fontSize='sm' mt={3}>{content}</Text>
                 <HStack spacing='18px'mt={4}>
-                    <Text fontSize='xs'>4 min read</Text>
+                    <Text fontSize='xs'>{Math.round(Math.random()*8+2)} min read</Text>
                     <Text fontSize='xs'>Selected for you</Text>
                 </HStack>
             </Box>

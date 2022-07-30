@@ -17,6 +17,10 @@ export default function Homepage() {
           <Routes>
             <Route path="/:postId" element={<SinglePost />} />
             <Route path="/" element={<Posts/>} />
+            <Route path="/notification" element={<Posts/>} />
+            <Route path="/lists" element={<Posts/>} />
+            <Route path="/stories" element={<Posts/>} />
+            <Route path="/new-story" element={<Posts/>} />
           </Routes>
         </BrowserRouter>
     </div>

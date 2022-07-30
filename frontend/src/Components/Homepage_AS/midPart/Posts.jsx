@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import "./post.css"
 import { Heading } from '@chakra-ui/react';
-import PostCard from "./component/PostCard"
+import PostCard from "./component/PostCard";
 
 async function getPosts() {
     const response = await fetch("http://localhost:8080/getAllPosts").catch((err) => {
@@ -18,7 +18,10 @@ export default function Posts() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        getPosts().then((response) => setPosts(response));    
+        getPosts().then((response) => {
+            response = response.slice(5,58);
+            setPosts(response);
+        });    
     }, []);
     return (
         <div className='post'>
