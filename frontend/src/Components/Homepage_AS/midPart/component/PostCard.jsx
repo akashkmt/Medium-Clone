@@ -17,7 +17,7 @@ export default function PostCard({ post }) {
                     <Heading as='h6' size='xs'>July {Math.round(Math.random()*30+1)}</Heading>
                 </HStack>
                 <Heading as='h4' size='md' mt={3}>{post.title}</Heading>
-                <Text fontSize='sm' mt={3}>{content}</Text>
+                <Text fontSize='sm' mt={3}>{content} . . . .</Text>
                 <HStack spacing='18px'mt={4}>
                     <Text fontSize='xs'>{Math.round(Math.random()*8+2)} min read</Text>
                     <Text fontSize='xs'>Selected for you</Text>

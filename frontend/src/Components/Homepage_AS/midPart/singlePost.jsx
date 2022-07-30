@@ -3,8 +3,8 @@ import "./post.css"
 import { Heading } from '@chakra-ui/react'
 import { useParams } from "react-router-dom";
 import SinglePostCard from "./component/singlePostCard"
-
-
+import * as ReactDOM from 'react-dom/client';
+import Profile from "../RightPart/profile";
 
 export default function SinglePost() {
     const params = useParams();
@@ -30,16 +30,22 @@ export default function SinglePost() {
     }, [])
 
 
-    // console.log(post);
+    const div= document.getElementById('profile');
+    const profile = ReactDOM.createRoot(div);
+
+    profile.render(
+        post ? (<Profile key={post._id} post={post} />) : null
+    );
     
+
     return (
-        
+
         <div className='post'>
 
             <div>
                 <Heading as='h5' mt={20} cursor="pointer" size='sm'></Heading>
             </div>
-            
+
             {
                 post ? (
                     <SinglePostCard key={post._id} post={post} />

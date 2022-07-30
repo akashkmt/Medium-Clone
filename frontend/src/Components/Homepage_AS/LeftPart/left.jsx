@@ -12,7 +12,7 @@ export default function Left() {
                 {/* <Link to={"/"}>
                     <img src="./Homepage_AS_Photo/medium.JPG" alt="medium" />
                 </Link> */}
-                <img src="./Homepage_AS_Photo/medium.JPG" alt="medium" />
+                <img src="./Homepage_AS_Photo/medium.JPG" alt="medium" style={{marginLeft:"-20px"}}/>
                 
             </div>
             <div className='mid'>
@@ -28,7 +28,7 @@ export default function Left() {
                 <img src="./Homepage_AS_Photo/write.JPG" alt="home" />
             </div>
             <div>
-                <Avatar style={{ cursor: "pointer" }}></Avatar>
+                <Avatar style={{ cursor: "pointer",marginLeft:"-20px" }}></Avatar>
             </div>
 
 

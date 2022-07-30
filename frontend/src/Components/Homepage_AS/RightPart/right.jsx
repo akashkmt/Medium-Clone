@@ -11,6 +11,7 @@ export default function Right() {
             <div>
                 <input type="text" id='search' placeholder="Search" />
             </div>
+            <div id='profile'></div>
             <div>
                 <li>What We’re Reading Today</li>
             </div>

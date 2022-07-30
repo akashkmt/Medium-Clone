@@ -51,3 +51,14 @@ li::before{
     margin-top: 15px;
     margin-left: 40px;
 }
+
+.photo{
+    width: 100px;
+    height: 100px;
+    border:1px solid black;
+    border-radius: 50px;
+    align-items: center;
+    text-align: center;
+    margin-left: 40px;
+    margin-top: 40px;
+}

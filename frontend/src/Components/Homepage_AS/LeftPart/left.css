@@ -7,7 +7,7 @@
     padding-left: 40px;
     height: 100%;
     border-right: 0.05px solid black;
-    width: 8%;
+    width: 6%;
     position: fixed;
     margin-top: -80px;
     
@@ -28,7 +28,7 @@
 .mid>img{
     margin-top: 15px;
     margin-bottom: 15px;
-    margin-left: 10px;
+    margin-left: -5px;
     width: 25px;
     height: 25px;
 }
