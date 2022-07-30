@@ -1,0 +1,107 @@
+.banner {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #212121;
+  padding-bottom: 160px;
+  background-color: #fbc02d;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.banner > div {
+  padding-top: 70px;
+  width: 45%;
+  padding-left: 65px;
+}
+
+.banner > div h1 {
+  letter-spacing: -0.05em;
+  line-height: 95px;
+  font-size: 110px;
+  font-family: 'Times New Roman', Times, serif;
+  padding-bottom: 30px;
+  color: black;
+  font-weight: 500;
+}
+.banner > div p {
+  font-family: sohne, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 24px;
+  font-size: 24px;
+  padding-bottom: 30px;
+  margin-right: 75px;
+}
+.banner > div button {
+  font-family: sohne, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 4px 20px 9px;
+  font-size: 20px;
+  color: white;
+  background: black;
+  border-radius: 20px;
+  width: 210px;
+  font-weight: 400;
+  opacity: 0.9;
+  position: sticky;
+  bottom: 160px;
+  left: 65px;
+  z-index: 0;
+  opacity: 0.8;
+}
+.banner > div button:hover{
+  opacity: 1;
+  cursor:pointer;
+}
+.trending {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #cecece;
+}
+
+.blogs{
+  width:70%;
+  display:flex;
+  justify-content:space-between;
+  margin:auto;
+  align-items: center;
+}
+.blogs .posts > div{
+  margin-bottom: 20px;
+}
+.blogs .discover{
+  width:40%;
+}
+.blogs .discover h1{
+  font-size: 12px;
+  font-weight: 700;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: rgba(41, 41, 41, 1);
+}
+
+.blogs .discover .explore {
+  border-bottom: 1px solid #cecece;
+}
+
+.blogs .discover .info{
+  display:flex;
+  flex-wrap: wrap;
+  gap:18px;
+}
+
+@media all and (max-width:400px){
+    .navbar{
+        width: 100%;
+        height:auto;
+        display:flex;
+        justify-content: space-between;
+        padding-left:10px;
+        padding-right:10px
+    }
+    .links{
+        display:none
+    }
+    
+    .trending{
+       width:100%;
+       height:auto;
+    }
+}
