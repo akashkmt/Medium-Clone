@@ -1,0 +1,51 @@
+.left{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    padding-left: 35px;
+    position: fixed;
+    top: 0;
+    border-right: 0.05px solid #e6e6e6;
+    /* border: 1px solid red; */
+    /* width:6%; */
+    width:87px;
+    height: 100vh;
+    
+    
+}
+.left>div{
+    
+    justify-content: space-between;
+}
+
+.mid{
+    display: flex;
+    flex-direction: column;
+    margin-left: -0.5vw;
+    margin-top: 11.3vh;
+}
+
+img{
+    cursor: pointer;
+}
+.tem1
+{
+    width: 1.78vw;
+    height: 7vh;
+    margin-top: 2vh;
+}
+.tem1 > img
+{
+    width: 100%;
+    height: 100%;
+}
+.tem0
+{
+    margin-top: -11vh;
+    margin-bottom: 15vh;
+  
+    position: relative;
+    left: -2vh;
+}
