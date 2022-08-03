@@ -14,6 +14,7 @@
 <li>Follow A User | Unfollow A User</li>
 </ul>
 <h5>Backend Repo Link: https://github.com/akashkmt/medium-web-app-backend</h5>
+<br />
 
 <img src="https://user-images.githubusercontent.com/97526754/182702429-1d811c77-b1b2-45fa-b4ff-754e821f67ea.png" />
 <img src="https://user-images.githubusercontent.com/97526754/182703233-81c4234b-5157-44f6-a5c2-2345bc39f82b.png" />
