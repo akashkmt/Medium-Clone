@@ -61,7 +61,7 @@ function PopupModal({ mainTitle }) {
   const loginWithFG = async userData => {
     // console.log('called',userData);
     try {
-      let res = await fetch('http://localhost:8080/loginUser', {
+      let res = await fetch('https://medium-web-app-backend.herokuapp.com/loginUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -143,7 +143,7 @@ function PopupModal({ mainTitle }) {
       password: passwordLogin,
     };
     try {
-      let res = await fetch('http://localhost:8080/loginUser', {
+      let res = await fetch('https://medium-web-app-backend.herokuapp.com/loginUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -198,7 +198,7 @@ function PopupModal({ mainTitle }) {
   const registerWithFG = async userData => {
     // console.log('called',userData);
     try {
-      let res = await fetch('http://localhost:8080/createUser', {
+      let res = await fetch('https://medium-web-app-backend.herokuapp.com/createUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -284,7 +284,7 @@ function PopupModal({ mainTitle }) {
       password: registerPassword,
     };
     try {
-      let res = await fetch('http://localhost:8080/createUser', {
+      let res = await fetch('https://medium-web-app-backend.herokuapp.com/createUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

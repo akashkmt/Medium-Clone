@@ -16,7 +16,7 @@ export default function SinglePost() {
     async function getPost(postId) {
         // console.log(postId)
         setIsLoadingPosts(true);
-        const response = await fetch(`http://localhost:8080/getPost/${postId}`).catch((err) => {
+        const response = await fetch(`https://medium-web-app-backend.herokuapp.com/getPost/${postId}`).catch((err) => {
             console.log(err);
         });
 
