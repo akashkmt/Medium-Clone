@@ -326,8 +326,7 @@ function PopupModal({ mainTitle }) {
   React.useEffect(() => {
     function start() {
       gapi.client.init({
-        clientId:
-          '72702126253-gk8cjqhtn4spj35a336earhlej9b3i8d.apps.googleusercontent.com',
+        clientId: process.env.REACT_APP_ID,
         scope: 'email',
       });
     }
