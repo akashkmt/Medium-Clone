@@ -393,7 +393,7 @@ function PopupModal({ mainTitle }) {
                       </Box>
                       <Box margin={'10px'}>
                         <GoogleLogin
-                          clientId="72702126253-gk8cjqhtn4spj35a336earhlej9b3i8d.apps.googleusercontent.com" //CLIENTID NOT CREATED YET
+                          clientId= {process.env.REACT_APP_ID} //CLIENTID NOT CREATED YET
                           buttonText="Sign up with Google"
                           className='login-with-google'
                           icon={true} 
@@ -556,7 +556,7 @@ function PopupModal({ mainTitle }) {
                     <Box margin={'10px'}>
                       {/* <div className='google-box'> */}
                       <GoogleLogin
-                        clientId="72702126253-gk8cjqhtn4spj35a336earhlej9b3i8d.apps.googleusercontent.com" //CLIENTID NOT CREATED YET
+                        clientId={process.env.REACT_APP_ID} //CLIENTID NOT CREATED YET
                         buttonText="Sign in with Google"
                         className='login-with-google'
                           icon={true}
