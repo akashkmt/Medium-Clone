@@ -114,7 +114,7 @@ function PopupModal({ mainTitle }) {
   };
 
   const responseGoogleLogin = response => {
-    // console.log(response);
+    console.log(response);
     loginWithFG({
       email: response.profileObj.email,
       password: response.profileObj.googleId,
