@@ -29,7 +29,7 @@ export default function RightTwo({ userPost }) {
     try {
       setIsLoadingUser(true);
       let token = localStorage.getItem('token');
-      await fetch(`https://medium-web-app-backend.herokuapp.com/followUser/${userId}`, {
+      await fetch(`https://medium-backend.onrender.com/followUser/${userId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ export default function RightTwo({ userPost }) {
     try {
       setIsLoadingUser(true);
       let token = localStorage.getItem('token');
-      await fetch(`https://medium-web-app-backend.herokuapp.com/unfollowUser/${userId}`, {
+      await fetch(`https://medium-backend.onrender.com/unfollowUser/${userId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ export default function RightTwo({ userPost }) {
     try {
       setIsLoadingUser(true);
       let res = await fetch(
-        `https://medium-web-app-backend.herokuapp.com/getSingleUser/${userPost._id}`
+        `https://medium-backend.onrender.com/getSingleUser/${userPost._id}`
       );
       let result = await res.json();
       // console.log(result);
@@ -86,7 +86,7 @@ export default function RightTwo({ userPost }) {
   const getUser = async token => {
     try {
       setIsLoadingUser(true);
-      let res = await fetch(`https://medium-web-app-backend.herokuapp.com/getUser`, {
+      let res = await fetch(`https://medium-backend.onrender.com/getUser`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

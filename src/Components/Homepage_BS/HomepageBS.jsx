@@ -23,7 +23,7 @@ function HomepageBS() {
   const getAllPosts = async () => {
     try {
       setIsLoadingPosts(true);
-      let res = await fetch('https://medium-web-app-backend.herokuapp.com/getAllPosts');
+      let res = await fetch('https://medium-backend.onrender.com/getAllPosts');
       let data = await res.json();
       let rand = Math.round(Math.random()*100);
       data = data.slice(rand, rand+20);

@@ -6,7 +6,7 @@ import PostCard from "./component/PostCard";
 // import Right from '../RightParts/right';
 
 async function getPosts() {
-    const response = await fetch("https://medium-web-app-backend.herokuapp.com/getAllPosts").catch((err) => {
+    const response = await fetch("https://medium-backend.onrender.com/getAllPosts").catch((err) => {
         console.log(err);
     });
 

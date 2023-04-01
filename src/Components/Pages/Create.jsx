@@ -18,7 +18,7 @@ function Create() {
   const getUser = async (token) => {
     try {
       token = token || localStorage.getItem('token');
-      let res = await fetch(`https://medium-web-app-backend.herokuapp.com/getUser`, {
+      let res = await fetch(`https://medium-backend.onrender.com/getUser`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ function Create() {
 const handleCreate = async() => {
   console.log(title, content);
   try {
-    await fetch(`https://medium-web-app-backend.herokuapp.com/createPost`, {
+    await fetch(`https://medium-backend.onrender.com/createPost`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

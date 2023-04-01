@@ -23,7 +23,7 @@ export default function Left() {
     const getUser = async (token) => {
       try {
         token = token || localStorage.getItem('token');
-        let res = await fetch(`https://medium-web-app-backend.herokuapp.com/getUser`, {
+        let res = await fetch(`https://medium-backend.onrender.com/getUser`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

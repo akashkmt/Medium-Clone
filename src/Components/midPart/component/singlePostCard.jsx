@@ -22,7 +22,7 @@ export default function SinglePostCard({post}) {
 
     const likePost = async () => {
         try {
-            await fetch(`https://medium-web-app-backend.herokuapp.com/likePost/${post._id}`, {
+            await fetch(`https://medium-backend.onrender.com/likePost/${post._id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export default function SinglePostCard({post}) {
 
     const dislikePost = async () => {
         try {
-            await fetch(`https://medium-web-app-backend.herokuapp.com/dislikePost/${post._id}`, {
+            await fetch(`https://medium-backend.onrender.com/dislikePost/${post._id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ export default function SinglePostCard({post}) {
 
       const getUser = async (token) => {
         try {
-          let res = await fetch(`https://medium-web-app-backend.herokuapp.com/getUser`, {
+          let res = await fetch(`https://medium-backend.onrender.com/getUser`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
